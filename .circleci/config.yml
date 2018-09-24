@@ -10,7 +10,7 @@ jobs:
             # documented at https://circleci.com/docs/2.0/circleci-images/
             # - image: circleci/mongo:3.4.4
 
-        working_directory: ~/final-capsule-project-app
+        working_directory: ~/capsule-project
 
         steps:
             - checkout
@@ -32,10 +32,10 @@ workflows:
     version: 2
     build-deploy:
         jobs:
-        - build
-        - deploy:
-            requires:
-                - build
-            filters:
-                branches:
-                    only: master
+            - build
+            - deploy:
+                requires:
+                    - build
+                filters:
+                    branches:
+                        only: master
