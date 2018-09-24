@@ -17,4 +17,8 @@ npm install
 npm start
 ```
 
+### CI/CD -
+```
+https://capsule-project.herokuapp.com/
+```
 

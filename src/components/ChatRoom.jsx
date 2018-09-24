@@ -5,6 +5,8 @@ import Typography from "@material-ui/core/Typography";
 import ChatMessage from "./ChatMessage";
 import ListUsers from "./ListUsers";
 import MessageForm from "./MessageForm";
+import CreateRoom from "./CreateChatRoom";
+import RoomList from "./ChatRoomList";
 import Logout from "./Logout";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -16,9 +18,9 @@ const styles = {
 		borderRadius: '4px',
 		boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12)'
 	},
-	rightSection: {
+	roomsSection: {
 		marginTop: '20px',
-		backgroundColor: '#fff',
+		backgroundColor: '#f5f5f5',
 		borderRadius: '4px',
 		boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12)',
 		height: 'auto',
@@ -101,6 +103,7 @@ class ChatRoom extends Component {
 		const currentuser = this.props.currentuser || {};
 		const users = currentuser ? currentuser.users : [];
 		const messages = this.props.messages || [];
+		const rooms = this.props.rooms || [];
     
 		if (users && users.length && this.state.mesgUpdate) {
 			this.props.dispatch({
@@ -134,6 +137,12 @@ class ChatRoom extends Component {
 							<h1 style={styles.roomListStyle}><span style={{backgroundColor:'#000', padding: '10px', color: '#fff'}}>Users List</span><div style={{borderTop:'1px solid #000', position: 'relative', top:'9px'}}></div></h1>
 							<ListUsers currentUser={currentuser} users={users} />
 						</div>
+						<section style={styles.roomsSection}>
+							<CreateRoom currentUser={this.props} />
+							<div style={{clear: 'both', marginTop: '15px'}}>
+								<RoomList rooms={rooms} />
+							</div>
+						</section>
 					</Grid>
 					<Grid item xs={12} sm={9}>
 						<section style={{marginTop: '10px'}}>

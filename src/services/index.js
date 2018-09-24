@@ -3,7 +3,7 @@ import Chatkit from '@pusher/chatkit';
 
 export function getUserName(username) {
 	return axios
-		.post('/users', { username })
+		.post('http://localhost:3001/users', { username })
 		.then(
 			result =>
 				new Promise((resolve, reject) => {
@@ -20,7 +20,7 @@ export function getCurrentUserNameService(username) {
 		instanceLocator: 'v1:us1:51ac1435-d28e-46aa-b3cd-fb19e28436e4',
 		userId: username,
 		tokenProvider: new Chatkit.TokenProvider({
-			url: '/authenticate'
+			url: 'http://localhost:3001/authenticate'
 			// To run this in local use this - url: 'http://localhost:3001/authenticate'
 		})
     })
