@@ -11,7 +11,7 @@ Enzyme.configure({
 
 it('Login component renders', () => {
     const div = document.createElement('div');
-    ReactDom.render('<LoginUserSection />', div);
+    ReactDom.render('<Login />', div);
     ReactDom.unmountComponentAtNode(div);
 });
 

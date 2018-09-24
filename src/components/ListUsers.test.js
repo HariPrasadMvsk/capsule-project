@@ -9,7 +9,7 @@ Enzyme.configure({
     adapter: new Adapter(),
 });
 
-it('List of users component renders', () => {
+it('List of users renders', () => {
     const div = document.createElement('div');
     ReactDom.render('<ListUsers />', div);
     ReactDom.unmountComponentAtNode(div);

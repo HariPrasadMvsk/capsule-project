@@ -9,7 +9,7 @@ Enzyme.configure({
     adapter: new Adapter(),
 });
 
-it('Message form component renders', () => {
+it('Message form renders', () => {
     const div = document.createElement('div');
     ReactDom.render('<MessageForm />', div);
     ReactDom.unmountComponentAtNode(div);

@@ -2,7 +2,7 @@ const { createStore } = require('redux');
 const capsuleProject = require('.');
 const should = require('chai').should();
 
-describe('Capsule Project testing', () => {
+describe('Capsule Project Unit Testing', () => {
 	it('should get user name', () => {
 		const currState = { username: '' };
 		const store = createStore(capsuleProject, currState);
