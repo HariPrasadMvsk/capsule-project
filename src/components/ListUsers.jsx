@@ -8,22 +8,24 @@ class ListUsers extends Component {
 	render() {
 		if (this.props.users) {
 			return (
-				<List>
+				<List style={{marginLeft: '25px'}}>
 					{this.props.users.map((user, index) => {
 						if (user.id === this.props.currentUser.id) {
 							return (
-								<ListItem key={user.id}>
-									<Avatar alt="Avatar" src="https://material.io/tools/icons/static/icons/twotone-person_pin-24px.svg"  />
-									<ListItemText style={this.buttonStyle} primary={user.name} secondary="Logged in."	/>
-								</ListItem>
-							);
+								<WhosOnlineListItem key={user.id} presenceState="online">
+									
+										<ListItemText style={{marginLeft: '0px'}} primary={user.name} secondary="(You)"	/>
+									
+								</WhosOnlineListItem>
+							)
 						}
 						return (
-							<ListItem key={user.id}>
-								<Avatar alt="Avatar" src="https://material.io/tools/icons/static/icons/baseline-person-24px.svg"  />
-								<ListItemText primary={user.name} />
-							</ListItem>
-						);
+							<WhosOnlineListItem key={index} presenceState={user.presence.state}>
+								
+									<ListItemText  style={{marginLeft: '0px'}} primary={user.name} />
+								
+							</WhosOnlineListItem>
+						)
 					})}
 				</List>
 			);
@@ -31,6 +33,43 @@ class ListUsers extends Component {
 			return <Avatar src="https://loading.io/spinners/typing/lg.-text-entering-comment-loader.gif" style={{ margin: 'auto'}} />;
 		}
 	}
+
+	
+}
+
+class WhosOnlineListItem extends Component {
+  render() {
+    const styles = {
+      li: {
+        display: 'flex',
+        alignItems: 'center',
+        marginTop: 5,
+        marginBottom: 5,
+        paddingTop: 2,
+        paddingBottom: 2,
+		paddingLeft: 0
+      },
+      div: {
+        borderRadius: '50%',
+        width: 11,
+        height: 11,
+        marginRight: 10,
+      },
+    }
+    return (
+     	<ListItem  style={styles.li}>
+        <div
+          style={{
+            ...styles.div,
+            backgroundColor:
+              this.props.presenceState === 'online' ? '#00FF00' : '#a9a9a9',
+          }}
+        />
+        {this.props.children}
+		</ListItem>
+      
+    )
+  }
 }
 
 export default ListUsers;
