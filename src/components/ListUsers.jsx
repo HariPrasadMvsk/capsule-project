@@ -53,21 +53,20 @@ class WhosOnlineListItem extends Component {
 				borderRadius: '50%',
 				width: 11,
 				height: 11,
-				marginRight: 10
+				marginRight: 11
 			},
 		}
 		return (
 			<ListItem  style={styles.li}>
-			<div
-			  style={{
-				...styles.div,
-				backgroundColor:
-				  this.props.presenceState === 'online' ? '#00FF00' : '#a9a9a9',
-			  }}
-			/>
-			{this.props.children}
+				<div
+				  style={{
+					...styles.div,
+					backgroundColor:
+					  this.props.presenceState === 'online' ? '#00FF00' : '#a9a9a9',
+				  }}
+				/>
+				{this.props.children}
 			</ListItem>
-		  
 		)
 	}
 }
