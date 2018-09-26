@@ -19,6 +19,6 @@ npm start
 
 ### CI/CD -
 ```
-https://capsule-project.herokuapp.com/
+https://hari-capsule-project.herokuapp.com/
 ```
 
